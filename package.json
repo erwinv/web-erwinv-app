@@ -1,5 +1,5 @@
 {
-  "name": "erwinv-app",
+  "name": "web-erwinv-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "next": "10.0.8",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^10.0.9",
+    "@types/node": "^14.14.34",
+    "@types/react": "^17.0.3",
+    "babel-plugin-import": "^1.13.3",
+    "typescript": "^4.2.3"
   }
 }
