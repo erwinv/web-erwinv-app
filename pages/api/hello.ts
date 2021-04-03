@@ -1,7 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiHandler } from 'next'
 
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+interface HelloResp {
+  name: string
+}
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+const hello: NextApiHandler<HelloResp> = (req, res) => {
   res.status(200).json({ name: 'John Doe' })
 }
+
+export default hello
