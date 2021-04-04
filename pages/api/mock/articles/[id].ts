@@ -1,5 +1,7 @@
 import { NextApiHandler } from 'next'
-import { fakeArticle, Article } from './'
+import { Article } from '../../../../types'
+
+import { articles } from './'
 
 const getArticle: NextApiHandler<Article> = (req, res) => {
   if (req.method !== 'GET') {
@@ -7,7 +9,9 @@ const getArticle: NextApiHandler<Article> = (req, res) => {
     return
   }
 
-  res.status(200).json(fakeArticle())
+  const article = articles.find(({ id }) => id === req.query.id)
+
+  res.status(article ? 200 : 404).json(article ?? null)
 }
 
 export default getArticle
