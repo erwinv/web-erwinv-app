@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { useState, Fragment } from 'react'
+import { useState } from 'react'
 import {
   Collapse,
   List,
@@ -23,18 +23,22 @@ interface NavMenuProps {
 export const NavMenu: React.FC<NavMenuProps> = ({ topics }) => {
   return (
     <List component='nav'>
-      {topics.map(TopicNav)}
+      {topics.map(topic => <TopicNav key={_.kebabCase(topic.name)} topic={topic} />)}
     </List>
   )
 }
 
-const TopicNav = (topic: Topic) => {
+interface TopicNavProps {
+  topic: Topic
+}
+
+const TopicNav: React.FC<TopicNavProps> = ({ topic }) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const toggleOpen = () => setOpen(open => !open)
 
   return (
-    <Fragment key={_.kebabCase(topic.name)}>
+    <>
       <ListItem button onClick={toggleOpen}>
         <ListItemText primary={topic.name} />
         {open ? <ExpandLess /> : <ExpandMore />}
@@ -48,6 +52,6 @@ const TopicNav = (topic: Topic) => {
           ))}
         </List>
       </Collapse>
-    </Fragment>
+    </>
   )
 }

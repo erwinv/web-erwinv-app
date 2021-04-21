@@ -6,6 +6,7 @@ import {
 
 export default createMuiTheme({
   palette: {
+    mode: 'dark', // TODO toggle button
     primary: {
       main: cyan.A700,
     },
