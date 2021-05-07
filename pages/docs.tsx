@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => createStyles({
   }
 }))
 
-interface DocsProps {
+export interface DocsProps {
   topics: Topic[]
 }
 
