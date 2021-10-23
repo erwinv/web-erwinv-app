@@ -4,14 +4,17 @@ import Head from 'next/head'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import { CacheProvider, EmotionCache } from '@emotion/react'
+import { Box, AppBar, Toolbar } from '@mui/material'
 import theme from '../styles/theme'
 import cache from '../styles/cache'
+import Link from '../components/link'
+import { drawerWidth } from '../components/drawer'
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache
 }
 
-function MyApp({ Component, pageProps, emotionCache }: MyAppProps) {
+function MyApp({ Component: Page, pageProps, emotionCache }: MyAppProps) {
   return (
     <CacheProvider value={emotionCache ?? cache}>
       <Head>
@@ -19,7 +22,19 @@ function MyApp({ Component, pageProps, emotionCache }: MyAppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <Box sx={{ display: 'flex' }}>
+          <AppBar
+            position='fixed'
+            sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+          >
+            <Toolbar>
+              <Link href='/'>Home</Link>
+              <Link href='/docs'>Docs</Link>
+              <Link href='/ssr/docs'>Docs (static)</Link>
+            </Toolbar>
+          </AppBar>
+          <Page {...pageProps} />
+        </Box>
       </ThemeProvider>
     </CacheProvider>
   )

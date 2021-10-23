@@ -10,10 +10,7 @@ import createEmotionServer from '@emotion/server/create-instance'
 import theme from '../styles/theme'
 import cache from '../styles/cache'
 
-const {
-  extractCriticalToChunks,
-  constructStyleTagsFromChunks,
-} = createEmotionServer(cache)
+const { extractCriticalToChunks } = createEmotionServer(cache)
 
 export default class MyDocument<P> extends Document<P> {
   static async getInitialProps(ctx: DocumentContext) {
@@ -25,7 +22,6 @@ export default class MyDocument<P> extends Document<P> {
 
     const initialProps = await super.getInitialProps(ctx)
     const emotionChunks = extractCriticalToChunks(initialProps.html)
-    // const emotionStyles = constructStyleTagsFromChunks(emotionChunks)
     const emotionStyleTags = emotionChunks.styles.map((style) => (
       <style
         data-emotion={`${style.key} ${style.ids.join(' ')}`}

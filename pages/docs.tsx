@@ -25,14 +25,14 @@ export interface DocsProps {
 
 const Docs: NextPage<DocsProps> = ({ topics }) => {
   return (
-    <Box display='flex'>
+    <>
       <Drawer topics={topics} />
       <Main className={classes.content}>
         <Container>
           <Typography variant='h3'>Hello, World!</Typography>
         </Container>
       </Main>
-    </Box>
+    </>
   )
 }
 
