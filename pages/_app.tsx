@@ -29,8 +29,8 @@ function MyApp({ Component: Page, pageProps, emotionCache }: MyAppProps) {
           >
             <Toolbar>
               <Link href='/'>Home</Link>
-              <Link href='/docs'>Docs</Link>
-              <Link href='/ssr/docs'>Docs (static)</Link>
+              <Link href='/docs'>Docs (static)</Link>
+              <Link href='/ssr/docs'>Docs (SSR)</Link>
             </Toolbar>
           </AppBar>
           <Page {...pageProps} />
