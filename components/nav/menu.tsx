@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { kebabCase } from 'lodash'
 import { useState } from 'react'
 import {
   Collapse,
@@ -16,7 +16,7 @@ interface NavMenuProps {
 export const NavMenu: React.FC<NavMenuProps> = ({ topics }) => {
   return (
     <List component='nav'>
-      {topics.map(topic => <TopicNav key={_.kebabCase(topic.name)} topic={topic} />)}
+      {topics.map(topic => <TopicNav key={kebabCase(topic.name)} topic={topic} />)}
     </List>
   )
 }

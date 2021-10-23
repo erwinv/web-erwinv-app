@@ -15,8 +15,15 @@
     [
       "import",
       {
+        "libraryName": "lodash",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      }
+    ],
+    [
+      "import",
+      {
         "libraryName": "@mui/material",
-        // "libraryDirectory": "esm",
         "libraryDirectory": "",
         "camel2DashComponentName": false
       },
@@ -26,7 +33,6 @@
       "import",
       {
         "libraryName": "@mui/icons-material",
-        // "libraryDirectory": "esm",
         "libraryDirectory": "",
         "camel2DashComponentName": false
       },
@@ -36,7 +42,6 @@
       "import",
       {
         "libraryName": "@mui/lab",
-        // "libraryDirectory": "esm",
         "libraryDirectory": "",
         "camel2DashComponentName": false
       },
