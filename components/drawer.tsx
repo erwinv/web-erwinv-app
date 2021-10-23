@@ -3,38 +3,29 @@ import { useState } from 'react'
 import {
   Drawer as MuiDrawer,
   Hidden,
-} from '@material-ui/core'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
 import { Topic } from '../types'
 import { NavMenu } from './nav/menu'
 
 const DRAWER_WIDTH = 240
-
-const useStyles = makeStyles(theme => createStyles({
-  drawer: {
-    width: DRAWER_WIDTH,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: DRAWER_WIDTH,
-  },
-}))
 
 interface DrawerProps {
   topics: Topic[]
 }
 
 export const Drawer: React.FC<DrawerProps> = ({ topics }) => {
-  const classes = useStyles()
   const [open, setOpen] = useState(false)
 
   return (
     <>
       <Hidden smDown implementation='css'>
         <MuiDrawer
-          className={classes.drawer}
-          classes={{
-            paper: classes.drawerPaper,
+          sx={{
+            width: DRAWER_WIDTH,
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              width: DRAWER_WIDTH,
+            },
           }}
           variant='permanent'
           anchor='left'
@@ -45,9 +36,12 @@ export const Drawer: React.FC<DrawerProps> = ({ topics }) => {
       </Hidden>
       <Hidden mdUp implementation='css'>
         <MuiDrawer
-          className={classes.drawer}
-          classes={{
-            paper: classes.drawerPaper,
+          sx={{
+            width: DRAWER_WIDTH,
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              width: DRAWER_WIDTH,
+            },
           }}
           ModalProps={{
             keepMounted: true,

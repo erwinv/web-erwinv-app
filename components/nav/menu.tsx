@@ -3,18 +3,11 @@ import { useState } from 'react'
 import {
   Collapse,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
-} from '@material-ui/core'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { ExpandLess, ExpandMore } from '@material-ui/icons'
+} from '@mui/material'
+import { ExpandLess, ExpandMore } from '@mui/icons-material'
 import { Topic } from '../../types'
-
-const useStyles = makeStyles(theme => createStyles({
-  nestedListItem: {
-    paddingLeft: theme.spacing(4),
-  },
-}))
 
 interface NavMenuProps {
   topics: Topic[]
@@ -33,22 +26,21 @@ interface TopicNavProps {
 }
 
 const TopicNav: React.FC<TopicNavProps> = ({ topic }) => {
-  const classes = useStyles()
   const [open, setOpen] = useState(false)
   const toggleOpen = () => setOpen(open => !open)
 
   return (
     <>
-      <ListItem button onClick={toggleOpen}>
+      <ListItemButton onClick={toggleOpen}>
         <ListItemText primary={topic.name} />
         {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open}>
+      </ListItemButton>
+      <Collapse in={open} unmountOnExit>
         <List component='div' disablePadding>
           {topic.articles.map(article => (
-            <ListItem key={article.id} button className={classes.nestedListItem}>
+            <ListItemButton key={article.id} sx={{ pl: 4 }}>
               <ListItemText primary={article.title} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </List>
       </Collapse>

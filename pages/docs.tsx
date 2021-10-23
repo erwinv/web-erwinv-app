@@ -3,15 +3,19 @@ import {
   Box,
   Container,
   Typography,
-} from '@material-ui/core'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { Drawer } from '../components/drawer'
 import { Topic } from '../types'
 import { topics } from './api/mock/topics'
 
-const useStyles = makeStyles(theme => createStyles({
-  content: {
-    flexGrow: 1,
+const PREFIX = 'Docs'
+const classes = {
+  content: `${PREFIX}-content`
+}
+const Main = styled('main')(({ theme }) => ({
+  [`& .${classes.content}`]: {
+    flexGrow: 1
   }
 }))
 
@@ -20,16 +24,14 @@ export interface DocsProps {
 }
 
 const Docs: NextPage<DocsProps> = ({ topics }) => {
-  const classes = useStyles()
-
   return (
     <Box display='flex'>
       <Drawer topics={topics} />
-      <main className={classes.content}>
+      <Main className={classes.content}>
         <Container>
           <Typography variant='h3'>Hello, World!</Typography>
         </Container>
-      </main>
+      </Main>
     </Box>
   )
 }

@@ -1,10 +1,10 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material/styles'
 import {
   cyan,
   red,
-} from '@material-ui/core/colors'
+} from '@mui/material/colors'
 
-export default createMuiTheme({
+export default createTheme({
   palette: {
     mode: 'dark', // TODO toggle button
     primary: {
